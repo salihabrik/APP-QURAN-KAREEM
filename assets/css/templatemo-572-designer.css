@@ -1,13 +1,7 @@
-/*
 
-TemplateMo 572 Designer
-
-https://templatemo.com/tm-572-designer
-
-*/
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'El Messiri', sans-serif;
 }
 
 .expanded {
@@ -191,7 +185,7 @@ section {
   max-width: 120px;
   position: absolute;
   top:10px;
-  border-radius: 90px;
+  border-radius: 60px;
   left: 10px;
 }
 .navbar-nav {
@@ -331,16 +325,16 @@ button:focus:not(:focus-visible) {
 
 .main-banner {
   background-color: #333;
-  background-image: url(../images/);
-  background-size: cover;
-  background-position: center center;
+  background-image: url(../images/mecca.jpg);
+  background-size:cover;
+  background-position: top;
   padding: 170px 0px 270px 0px;
   text-align: center;
 }
 
 @media (min-width: 576px) {
   .main-banner {
-    padding: 150px 0px 200px 0px;
+    padding: 150px 0px 380px 0px;
   }
 }
 
@@ -619,7 +613,7 @@ section.whats-trending .right-image::after {
 section.contact-us {
   margin-top: 60px;
   padding: 60px 0px;
-  background-image: url(../images/contact-us-bg.jpg);
+  background-image: url(../images/1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -865,7 +859,7 @@ footer .sub-footer a.scroll-to-top:hover {
 
 .page-banner {
   background-color: #333;
-  background-image: url(../images/mecca1.webp);
+  background-image: url(../images/mecca.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
