@@ -182,9 +182,9 @@ section {
   transition: all .3s;
 }
 .logo {
-  max-width: 120px;
+  max-width: 110px;
   position: absolute;
-  top:10px;
+  top:5px;
   border-radius: 60px;
   left: 10px;
 }
@@ -865,6 +865,11 @@ footer .sub-footer a.scroll-to-top:hover {
   background-position: center center;
   padding: 100px 0px 90px 0px;
   text-align: center;
+
+  position: absolute;
+  top:5px;
+  
+  left: 10px;
 }
 
 @media (min-width: 768px) {
