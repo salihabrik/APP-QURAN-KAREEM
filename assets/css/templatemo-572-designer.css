@@ -334,7 +334,7 @@ button:focus:not(:focus-visible) {
 
 @media (min-width: 576px) {
   .main-banner {
-    padding: 150px 0px 380px 0px;
+    padding: 870px0px 0px 0px 0px;
   }
 }
 
@@ -859,7 +859,7 @@ footer .sub-footer a.scroll-to-top:hover {
 
 .page-banner {
   background-color: #333;
-  background-image: url(../images/mecca.jpg);
+  background-image: url(../images/1I.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
