@@ -606,14 +606,14 @@ section.whats-trending .right-image::after {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   position: absolute;
-  background: url(../images/whats-trending-right-image.png);
+  background: url(https://unsplash.com/photos/a-group-of-people-standing-in-front-of-a-building-J8vjITij1xw);
   content: '';
 }
 
 section.contact-us {
   margin-top: 60px;
   padding: 60px 0px;
-  background-image: url(../images/1.jpg);
+  background-image: url(https://unsplash.com/photos/a-group-of-people-standing-in-front-of-a-building-J8vjITij1xw);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -859,7 +859,7 @@ footer .sub-footer a.scroll-to-top:hover {
 
 .page-banner {
   background-color: #333;
-  background-image: url(../images/1I.jpg);
+  background-image: url(https://unsplash.com/photos/a-group-of-people-standing-in-front-of-a-building-J8vjITij1xw);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
