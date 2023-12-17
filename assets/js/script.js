@@ -10,18 +10,19 @@ async function getReciters() {
     data.reciters.forEach(reciter => 
     chooseReciter.innerHTML += `<option value="${reciter.id}">${reciter.name}</option>`);
    
-    chooseReciter.addEventListener('change', (event) => getMoshaf(event.target.value));
+    chooseReciter.addEventListener('change', e => getMoshaf(e.target.value));
 }    
 getReciters()
 
-async function getMoshaf(reciter) {
+async function getMoshaf() {
     const chooseMoshaf = document.querySelector('#chooseMoshaf');
-    await fetch(`${apiUrl}/reciters?language=${language}&reciter=${reciter}`);
+    const response = await fetch(`${apiUrl}/reciters?language=${language}&reciters=${reciters}`);
     const data = await response.json();
     const moshafs = data.reciters[0].moshafs;
+
     chooseMoshaf.innerHTML = '<option value="">اختر المصحف</option>';
     moshafs.forEach(moshaf => {
-        chooseMoshaf.innerHTML += `<option value="${moshaf.id}"data-server="${moshaf.server}";data-suralist="${moshaf.suralist}">${moshaf.name}</option>`;
+        chooseMoshaf.innerHTML += `<option value="${moshaf.id}" data-server="${moshaf.server}" data-suralist="${moshaf.suralist}">${moshaf.name}</option>`;
     });
 
     chooseMoshaf.addEventListener('change', () => {
@@ -32,21 +33,29 @@ async function getMoshaf(reciter) {
     });
 }
 
-async function getSurah(surahServer, surahList) {
+
+async function getSurah(surahList) {
     const chooseSurah = document.querySelector('#chooseSurah');
 
-    const res = await fetch(`https://mp3quran.net/api/v3/suwar`);
-    const data = await res.json();
-    const suraNames = data.suwar;
+    // Fetch surah names from the API
+    const surahResponse = await fetch(`${apiUrl}/suwar`);
+    const surahData = await surahResponse.json();
+    const suraNames = surahData.suwar;
 
+    // Split the surahList into an array
     surahList = surahList.split(',');
+
     chooseSurah.innerHTML = '<option value="">اختر السورة</option>';
+
+    // Iterate over each surah in the surahList
     surahList.forEach(surah => {
-        suraNames.forEach(surahName => {
-            if (surahName.id == surah) {
-                chooseSurah.innerHTML += `<option value="${surahName.id}">${surahName.name}</option>`;
-            }
-        });
+        // Find the corresponding surahName from the API data
+        const surahName = suraNames.find(s => s.id == surah);
+
+        if (surahName) {
+            // Add the surah to the dropdown
+            chooseSurah.innerHTML += `<option value="${surahName.id}">${surahName.name}</option>`;
+        }
     });
 
     chooseSurah.addEventListener('change', () => {
@@ -60,14 +69,15 @@ function playSurah(surah) {
     audioPlayer.src = `https://server8.mp3quran.net/${surah}/${surah}.mp3`;
     audioPlayer.play();
 }
-function playLive(channel){
-    if (hls.isSupported) {
+
+function playLive(channel) {
+    if (Hls.isSupported) { // Note: Changed from hls to Hls
         var video = document.getElementById('LiveVideo');
-        var hls = new hls();
-        hls.loadSource(`${channel}`);
-        hls.attachMedia(video);
-        hls.on(hls.Events.MANIFEST_PARSED,function() {
-          video.play();
-      });
+        var hlsInstance = new Hls(); // Note: Changed from hls to Hls
+        hlsInstance.loadSource(`${channel}`);
+        hlsInstance.attachMedia(video);
+        hlsInstance.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+        });
     }
 }
