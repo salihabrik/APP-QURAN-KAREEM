@@ -40,6 +40,7 @@ async function getSurah(surahServer, surahList) {
 
     const res = await fetch(`https://mp3quran.net/api/v3/suwar`)
     const data = await res.json();
+    console.log('API res:', data);
     const suraNames = data.suwar;
 
     surahList = surahList.split(',');
@@ -47,7 +48,7 @@ async function getSurah(surahServer, surahList) {
     surahList.forEach(surah => {
         const padSurah = surah.padStart(3, '0');
         suraNames.forEach(surahName => {
-            console.log(surah, surahName.id);
+            console.log('Comparing:', surah, surahName.id);
             if (surahName.id == surah) {
                 chooseSurah.innerHTML += `<option value="${surahServer}${padSurah}.mp3">${surahName.name}</option>`
                 
