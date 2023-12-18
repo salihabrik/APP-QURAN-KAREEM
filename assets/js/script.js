@@ -71,25 +71,14 @@ audioPlayer.src = surahmp3;
 
 
 function playLive(channel) {
-    if (Hls.isSupported) { // Remove parentheses here
-        var video = document.getElementById('livevideo');
+    if (Hls.isSupported()) { 
+        var video = document.getElementById('Livevideo');
         var hls = new Hls();
         hls.loadSource(`${channel}`);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
             video.play();
         });
-    } else {
-        // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
-        // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element through the `src` property.
-        // This is using the built-in support of the plain video element, without using hls.js.
-        var video = document.getElementById('livevideo');
-        if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = 'https://d26g5bnklkwsh4.cloudfront.net/adf856d9-a233-484b-a730-f7ac57c53aa5/master.m3u8';
-            video.addEventListener('canplay', function () {
-                video.play();
-            });
-        }
     }
 }
 
