@@ -1,13 +1,5 @@
 # APP-QURAN-KAREEM
-## Table of Contents:
-
-- [APP-QURAN-KAREEM](#app-quran-kareem)
-  - [Table of Contents:](#table-of-contents)
-  - [APP-QURAN-KAREEM](#app-quran-kareem-1)
-  - [Installation:](#installation)
-  - [Usage:](#usage)
-  - [Credits:](#credits)
-  - [License:](#license)
+![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 
 ## APP-QURAN-KAREEM
@@ -15,6 +7,16 @@
 This is a simple app that displays the Quran in Arabic and English. It also has a search feature that allows you to search for a specific verse. The app is built using React and Redux. The Quran API is used to fetch the data. The app is deployed on Heroku.
 
 ![Alt text](assets/css/mecccaL.jpg)
+
+## Table of Contents:
+
+- [APP-QURAN-KAREEM](#app-quran-kareem)
+  - [APP-QURAN-KAREEM](#app-quran-kareem-1)
+  - [Table of Contents:](#table-of-contents)
+  - [Installation:](#installation)
+  - [Usage:](#usage)
+  - [Credits:](#credits)
+  - [License:](#license)
 
 ## Installation:
 1. Clone the repo
@@ -45,7 +47,7 @@ This is a simple app that displays the Quran in Arabic and English. It also has 
 ## License:
 MIT License
 
-Copyright (c) 2023 SalihA brik
+Copyright (c) 2023 Saliha Brik
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
