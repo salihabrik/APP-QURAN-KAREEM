@@ -20,18 +20,20 @@ async function getMoshaf(reciter) {
     const res = await fetch(`${apiUrl}/reciters?language=${language}&reciter=${reciter}`);
     const data = await res.json();
     const moshafs = data.reciters[0].moshaf
+
+
     chooseMoshaf.innerHTML = '<option value="">اختر المصحف</option>';
     moshafs.forEach(moshaf => {
         chooseMoshaf.innerHTML += `<option value="${moshaf.id}"data-server=${moshaf.server}" data-surahList="${moshaf.surah_List}">${moshaf.name}</option>`;
         console.log(moshaf);
     });
 
-    chooseMoshaf.addEventListener('change', event => {
+    chooseMoshaf.addEventListener('change', () => {
         const selectedMoshaf = chooseMoshaf.options[chooseMoshaf.selectedIndex];
         const surahServer = selectedMoshaf.dataset.server;
         const surahList = selectedMoshaf.dataset.surahlist;
         getSurah(surahServer, surahList);
-       
+       console.log(surahServer, surahList);
     });
 }
 
@@ -57,7 +59,7 @@ async function getSurah(surahServer, surahList) {
         });
     });
 
-    chooseSurah.addEventListener('change', event => {
+    chooseSurah.addEventListener('change', () => {
         const selectedSurah = chooseSurah.options[chooseSurah.selectedIndex];
         playSurah(selectedSurah.value);
         console.log(selectedSurah.value);
@@ -65,7 +67,7 @@ async function getSurah(surahServer, surahList) {
 }
 function playSurah(surahmp3) {
     const audioPlayer = document.querySelector('#audioPlayer');
-audioPlayer.src = surahmp3;
+    audioPlayer.src = surahmp3;
     audioPlayer.play();
 }
 
