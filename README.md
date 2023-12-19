@@ -6,6 +6,8 @@
 
 This is a simple app that displays the Quran in Arabic and English. It also has a search feature that allows you to search for a specific verse. The app is built using React and Redux. The Quran API is used to fetch the data. The app is deployed on Heroku.
 
+
+
 ![Alt text](assets/css/mecccaL.jpg)
 
 ## Table of Contents:

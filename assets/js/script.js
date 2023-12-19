@@ -11,7 +11,7 @@ async function getReciters() {
     chooseReciter.innerHTML += `<option value="${reciter.id}">${reciter.name}</option>`);
 
     chooseReciter.addEventListener('change',
-     (event) => getMoshaf(event.target.value));
+    (event) => getMoshaf(event.target.value));
 }    
 getReciters()
 
@@ -20,20 +20,24 @@ async function getMoshaf(reciter) {
     const res = await fetch(`${apiUrl}/reciters?language=${language}&reciter=${reciter}`);
     const data = await res.json();
     const moshafs = data.reciters[0].moshaf
-
-
     chooseMoshaf.innerHTML = '<option value="">اختر المصحف</option>';
     moshafs.forEach(moshaf => {
-        chooseMoshaf.innerHTML += `<option value="${moshaf.id}"data-server=${moshaf.server}" data-surahList="${moshaf.surah_List}">${moshaf.name}</option>`;
+        chooseMoshaf.innerHTML +=
+        `<option value="${moshaf.id}"
+        data-server=${moshaf.server}"
+        data-surahList="${moshaf.surah_List}"
+        >${moshaf.name}</option>`;
         console.log(moshaf);
     });
 
-    chooseMoshaf.addEventListener('change', () => {
+    chooseMoshaf.addEventListener('change',
+    event => {
         const selectedMoshaf = chooseMoshaf.options[chooseMoshaf.selectedIndex];
         const surahServer = selectedMoshaf.dataset.server;
         const surahList = selectedMoshaf.dataset.surahlist;
         getSurah(surahServer, surahList);
-       console.log(surahServer, surahList);
+        console.log(selectedMoshaf.dataset.server);
+        console.log(selectedMoshaf.dataset.surahlist);
     });
 }
 
@@ -42,39 +46,36 @@ async function getSurah(surahServer, surahList) {
 
     const res = await fetch(`https://mp3quran.net/api/v3/suwar`)
     const data = await res.json();
-    console.log('API res:', data);
-    const suraNames = data.suwar;
-
+    const surahNames = data.suwar;
     surahList = surahList.split(',');
     chooseSurah.innerHTML = '<option value="">اختر السورة</option>';
     surahList.forEach(surah => {
         const padSurah = surah.padStart(3, '0');
-        suraNames.forEach(surahName => {
-            console.log('Comparing:', surah, surahName.id);
+        surahNames.forEach(surahName => {
             if (surahName.id == surah) {
-                chooseSurah.innerHTML += `<option value="${surahServer}${padSurah}.mp3">${surahName.name}</option>`
+                chooseSurah.innerHTML += `<option value="${surahServer}${padSurah}.mp3">${surahName.name}</option>`;
                 
             }
 
         });
     });
 
-    chooseSurah.addEventListener('change', () => {
+    chooseSurah.addEventListener('change', event => {
         const selectedSurah = chooseSurah.options[chooseSurah.selectedIndex];
         playSurah(selectedSurah.value);
         console.log(selectedSurah.value);
     });
 }
-function playSurah(surahmp3) {
+function playSurah(surahMp3) {
     const audioPlayer = document.querySelector('#audioPlayer');
-    audioPlayer.src = surahmp3;
+audioPlayer.src = surahMp3;
     audioPlayer.play();
 }
 
 
 function playLive(channel) {
-    if (Hls.isSupported()) { 
-        var video = document.getElementById('Livevideo');
+    if (Hls.isSupported) 
+        var video = document.getElementById('LiveVideo');
         var hls = new Hls();
         hls.loadSource(`${channel}`);
         hls.attachMedia(video);
@@ -82,5 +83,4 @@ function playLive(channel) {
             video.play();
         });
     }
-}
 
